@@ -1,0 +1,8 @@
+# HLS Downloader runtime files
+segments_temp/
+streaming_output.ts
+last_stitched.txt
+segment_urls.txt
+last_m3u8_url.txt
+last_stream_url.txt
+final_video.mp4
