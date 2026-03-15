@@ -1,6 +1,6 @@
 # Stream Spool
 
-Download a stream and watch in VLC while it downloads. Resumable; finalize to MP4 when done.
+Download a stream and watch in a video player while it downloads. Resumable; finalize to MP4 when done.
 
 ## Requirements
 
@@ -29,7 +29,7 @@ Then run `streamspool`.
 streamspool
 ```
 
-Enter the stream URL when prompted (usually a playlist URL). The script will download and build `streaming_output.ts`; open it in VLC to watch as it grows. When finished, you can finalize to `final_video.mp4` and optionally delete temporary files.
+Enter the stream URL when prompted (usually a playlist URL). The script will download and build `streaming_output.ts`; open it in a video player to watch as it grows. When finished, you can finalize to `final_video.mp4` and optionally delete temporary files.
 
 ## Finding the stream URL
 

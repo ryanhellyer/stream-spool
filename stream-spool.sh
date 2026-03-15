@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Stream Spool
-# Download a stream and watch in VLC while it downloads.
+# Download a stream and watch in a video player while it downloads.
 #
 
 set -euo pipefail
@@ -162,9 +162,9 @@ do_download() {
     mkdir -p "$WORK_DIR" "$SEGMENTS_DIR"
     echo -e "${C_CYAN}Downloading...${C_RESET}"
     if [[ -f "$MASTER_TS" ]]; then
-        echo -e "${C_DIM}Resuming — $MASTER_TS is already available to view in VLC.${C_RESET}"
+        echo -e "${C_DIM}Resuming — $MASTER_TS is already available to view in a video player.${C_RESET}"
     else
-        echo -e "${C_DIM}$MASTER_TS will appear once ready — you can open it in VLC to watch while it downloads.${C_RESET}"
+        echo -e "${C_DIM}$MASTER_TS will appear once ready — you can open it in a video player to watch while it downloads.${C_RESET}"
     fi
     background_stitcher &
     STITCHER_PID=$!
@@ -181,7 +181,7 @@ do_download() {
     run_stitch
 
     if [[ -f "$MASTER_TS" ]]; then
-        echo -e "${C_GREEN}Done. You can watch ${C_BOLD}$MASTER_TS${C_GREEN} in VLC.${C_RESET}"
+        echo -e "${C_GREEN}Done. You can watch ${C_BOLD}$MASTER_TS${C_GREEN} in a video player.${C_RESET}"
     fi
 }
 
@@ -211,7 +211,7 @@ main() {
     if [[ "${final,,}" != n ]]; then
         do_finalize
     else
-        echo -e "${C_DIM}Open $MASTER_TS in VLC. Run this script again to finalize to MP4 later.${C_RESET}"
+        echo -e "${C_DIM}Open $MASTER_TS in a video player. Run this script again to finalize to MP4 later.${C_RESET}"
     fi
 }
 
