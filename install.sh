@@ -2,6 +2,7 @@
 #
 # Install Stream Spool as the command 'streamspool'.
 # Run from the directory that contains stream-spool.sh.
+# https://github.com/ryanhellyer/stream-spool/
 #
 
 set -euo pipefail

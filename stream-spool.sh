@@ -2,6 +2,7 @@
 #
 # Stream Spool
 # Download a stream and watch in a video player while it downloads.
+# https://github.com/ryanhellyer/stream-spool/
 #
 
 set -euo pipefail
