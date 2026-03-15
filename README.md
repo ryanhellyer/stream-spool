@@ -11,16 +11,10 @@ Many streaming sites use **HLS** (HTTP Live Streaming), which delivers video as 
 
 ## Install
 
-```bash
-mkdir -p ~/.local/bin
-curl -sSL https://raw.githubusercontent.com/ryanhellyer/stream-spool/master/stream-spool.sh -o ~/.local/bin/streamspool
-chmod +x ~/.local/bin/streamspool
-```
-
-Ensure `~/.local/bin` is in your PATH (many distros add it automatically). If not, add to `~/.bashrc` or `~/.profile`:
+One command: it downloads the script and installs to a directory that’s already in your PATH, or to `~/.local/bin` (creating it if needed).
 
 ```bash
-export PATH="$HOME/.local/bin:$PATH"
+curl -sSL https://raw.githubusercontent.com/ryanhellyer/stream-spool/master/stream-spool.sh -o /tmp/stream-spool.sh && chmod +x /tmp/stream-spool.sh && bash -c 'set -e; d=; if [[ -w /usr/local/bin ]]; then d=/usr/local/bin; elif command -v sudo >/dev/null 2>&1; then sudo install -m 755 /tmp/stream-spool.sh /usr/local/bin/streamspool; echo "Installed to /usr/local/bin/streamspool"; exit 0; elif [[ -d "$HOME/.local/bin" && -w "$HOME/.local/bin" ]]; then d=$HOME/.local/bin; elif [[ -d "$HOME/bin" && -w "$HOME/bin" ]]; then d=$HOME/bin; else mkdir -p "$HOME/.local/bin"; d=$HOME/.local/bin; fi; if [[ -n "$d" ]]; then install -m 755 /tmp/stream-spool.sh "$d/streamspool"; echo "Installed to $d/streamspool"; if ! echo ":$PATH:" | grep -q ":$d:"; then echo "Add to PATH (e.g. in ~/.bashrc): export PATH=\"$d:\$PATH\""; fi; fi'
 ```
 
 Then run `streamspool`.
