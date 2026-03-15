@@ -10,7 +10,9 @@ Download a stream and watch in VLC while it downloads. Resumable; finalize to MP
 ## Install
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/ryanhellyer/stream-spool/main/stream-spool.sh -o /tmp/stream-spool.sh && chmod +x /tmp/stream-spool.sh && sudo install -m 755 /tmp/stream-spool.sh /usr/local/bin/streamspool
+curl -sSL https://raw.githubusercontent.com/ryanhellyer/stream-spool/master/stream-spool.sh -o /tmp/stream-spool.sh
+chmod +x /tmp/stream-spool.sh
+sudo install -m 755 /tmp/stream-spool.sh /usr/local/bin/streamspool
 ```
 
 Then run `streamspool`.
