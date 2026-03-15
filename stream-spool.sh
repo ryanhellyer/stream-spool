@@ -16,7 +16,7 @@ C_DIM='\033[2m'
 
 WORK_DIR="stream-spool"
 SEGMENTS_DIR="$WORK_DIR/segments"
-MASTER_TS="$WORK_DIR/streaming_output.ts"
+MASTER_TS="streaming_output.ts"
 LAST_STITCHED_FILE="$WORK_DIR/last_stitched.txt"
 URLS_FILE="$WORK_DIR/segment_urls.txt"
 LAST_URL_FILE="$WORK_DIR/last_stream_url.txt"
@@ -196,7 +196,8 @@ do_finalize() {
     echo -e "${C_GREEN}Created $out${C_RESET}"
     read -rp "Delete temporary files? [y/N] " cleanup
     if [[ "${cleanup,,}" == y ]]; then
-        rm -rf "$SEGMENTS_DIR" "$MASTER_TS" "$LAST_STITCHED_FILE" "$LAST_URL_FILE"
+        rm -f "$MASTER_TS"
+        rm -rf "$WORK_DIR"
         echo -e "${C_GREEN}Cleanup done.${C_RESET}"
     fi
 }

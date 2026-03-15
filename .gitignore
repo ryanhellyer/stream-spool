@@ -1,3 +1,4 @@
-# Stream Spool working directory (segments, stitched output, state)
+# Stream Spool working directory and output files
 stream-spool/
+streaming_output.ts
 final_video.mp4
