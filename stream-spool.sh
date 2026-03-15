@@ -19,7 +19,7 @@ MASTER_TS="streaming_output.ts"
 LAST_STITCHED_FILE="last_stitched.txt"
 URLS_FILE="segment_urls.txt"
 LAST_URL_FILE="last_stream_url.txt"
-PARALLEL_JOBS="${PARALLEL_JOBS:-15}"
+PARALLEL_JOBS=15
 STITCH_INTERVAL=20
 STITCHER_PID=""
 
