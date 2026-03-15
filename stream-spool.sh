@@ -14,11 +14,12 @@ C_YELLOW='\033[33m'
 C_CYAN='\033[36m'
 C_DIM='\033[2m'
 
-SEGMENTS_DIR="segments_temp"
-MASTER_TS="streaming_output.ts"
-LAST_STITCHED_FILE="last_stitched.txt"
-URLS_FILE="segment_urls.txt"
-LAST_URL_FILE="last_stream_url.txt"
+WORK_DIR="stream-spool"
+SEGMENTS_DIR="$WORK_DIR/segments"
+MASTER_TS="$WORK_DIR/streaming_output.ts"
+LAST_STITCHED_FILE="$WORK_DIR/last_stitched.txt"
+URLS_FILE="$WORK_DIR/segment_urls.txt"
+LAST_URL_FILE="$WORK_DIR/last_stream_url.txt"
 PARALLEL_JOBS=15
 STITCH_INTERVAL=20
 STITCHER_PID=""
@@ -52,7 +53,7 @@ parse_manifest() {
     echo "$stream_url" > "$LAST_URL_FILE"
     echo -e "${C_DIM}Fetching playlist...${C_RESET}"
     BASE_URL=$(get_base_url "$stream_url")
-    mkdir -p "$SEGMENTS_DIR"
+    mkdir -p "$WORK_DIR" "$SEGMENTS_DIR"
     local manifest
     manifest=$(curl -sS -L --retry 3 --retry-delay 2 -- "$stream_url") || { echo -e "${C_RESET}Failed to fetch playlist.${C_RESET}" >&2; return 1; }
 
@@ -158,7 +159,7 @@ do_download() {
         echo -e "${C_RESET}No playlist. Enter a stream URL first.${C_RESET}" >&2
         return 1
     fi
-    mkdir -p "$SEGMENTS_DIR"
+    mkdir -p "$WORK_DIR" "$SEGMENTS_DIR"
     echo -e "${C_CYAN}Downloading...${C_RESET}"
     if [[ -f "$MASTER_TS" ]]; then
         echo -e "${C_DIM}Resuming — $MASTER_TS is already available to view in VLC.${C_RESET}"
